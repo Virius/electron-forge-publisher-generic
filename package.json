@@ -1,0 +1,24 @@
+{
+  "name": "electron-forge-publisher-generic",
+  "version": "0.0.4",
+  "description": "custom electron-forge publisher for generic update server",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ravil Giniyatullin",
+  "license": "MIT",
+  "dependencies": {
+    "@electron-forge/async-ora": "6.0.0-beta.61",
+    "@electron-forge/publisher-base": "6.0.0-beta.61",
+    "@electron-forge/shared-types": "6.0.0-beta.61",
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.5",
+    "typescript": "^4.4.4"
+  }
+}
