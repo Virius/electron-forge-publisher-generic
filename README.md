@@ -1,7 +1,7 @@
-Паблишер для проекта electron-forge, который публикует артифакты на generic сервере.
+This is publisher module for electron-forge, that publicate artifacts to generic update server.
 
-В качестве основы взяты следующие материалы:
-* стандартный паблишер из проекта electron-forge:
+Based on:
+* standart electron-forge publisher:
 https://github.com/electron-userland/electron-forge/blob/master/packages/publisher/bitbucket/src/PublisherBitbucket.ts
-* инструкции из проекта electron-forge:
+* docs from electron-forge:
 https://www.electronforge.io/advanced/extending-electron-forge/writing-publishers
