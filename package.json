@@ -1,6 +1,6 @@
 {
   "name": "electron-forge-publisher-generic",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "custom electron-forge publisher for generic update server",
   "main": "dist/index.js",
   "typуs": "dist/index.d.ts",
