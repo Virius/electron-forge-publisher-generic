@@ -1,5 +1,4 @@
-import PublisherBase, { PublisherOptions } from '@electron-forge/publisher-base';
-import { asyncOra } from '@electron-forge/async-ora';
+import { PublisherBase, PublisherOptions } from '@electron-forge/publisher-base';
 import FormData from 'form-data';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
@@ -42,25 +41,23 @@ const LATEST_YAML_FILEPATH = 'latest.yml';
 class PublisherGeneric extends PublisherBase<PublisherGenericConfig> {
     name = 'generic';
 
-    async publish({ makeResults }: PublisherOptions): Promise<void> {
+    async publish({ makeResults, setStatusLine }: PublisherOptions): Promise<void> {
         const collapsedResults = this.collapseMakeResults(makeResults);
         const osCount = Object.keys(collapsedResults).length;
 
         for (const [os, artifacts] of Object.entries(collapsedResults)) {
             const msg = `Uploading result (${os}/${osCount})`;
-
-            await asyncOra(msg, async () => {
-                for (const artifactPath of artifacts.files) {
-                    await this.uploadFile(artifactPath, os);
+            setStatusLine(msg);
+            for (const artifactPath of artifacts.files) {
+                await this.uploadFile(artifactPath, os);
+            }
+            if (artifacts.metaFiles.length > 0) {
+                let metaObj = {};
+                for (const artifactPath of artifacts.metaFiles) {
+                    Object.assign(metaObj, await this.loadYamlFileToObj(artifactPath));
                 }
-                if (artifacts.metaFiles.length > 0) {
-                    let metaObj = {};
-                    for (const artifactPath of artifacts.metaFiles) {
-                        Object.assign(metaObj, await this.loadYamlFileToObj(artifactPath));
-                    }
-                    await this.uploadFile(LATEST_YAML_FILEPATH, os, this.objToYamlString(metaObj));
-                }
-            });
+                await this.uploadFile(LATEST_YAML_FILEPATH, os, this.objToYamlString(metaObj));
+            }
         }
     }
 
