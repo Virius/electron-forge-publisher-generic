@@ -1,6 +1,6 @@
 {
   "name": "electron-forge-publisher-generic",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "custom electron-forge publisher for generic update server",
   "main": "dist/index.js",
   "typуs": "dist/index.d.ts",
@@ -16,8 +16,8 @@
   "author": "Ravil Giniyatullin",
   "license": "MIT",
   "dependencies": {
-    "@electron-forge/publisher-base": "6.1.1",
-    "@electron-forge/shared-types": "6.1.1",
+    "@electron-forge/publisher-base": "6.4.2",
+    "@electron-forge/shared-types": "6.4.2",
     "form-data": "^4.0.0",
     "js-yaml": "^4.1.0",
     "node-fetch": "^2.6.0"
